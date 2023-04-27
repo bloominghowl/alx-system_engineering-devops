@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# This script displays the content of the current directory in list format, only the part of the name after the first dash is displayed
-
-list=$(ls)  # used command substition because ls is a command
-
-for VAR in $list    # loop through all filenames in current directory
+# This script is displaying "Holberton School" 10 times
+for i in *
 do
-    echo "$VAR" | cut -d "-" -f 2-  # cut the file when - is reached and returns the field 2 downwards
+    echo "$i" | cut -d'-' -f2
 done
