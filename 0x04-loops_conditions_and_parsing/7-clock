@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 # This script displays the content of the current directory in list format, only the part of the name after the first dash is displayed
 
-list=$(ls)  # used command substition because ls is a command
+hour=0
 
-for VAR in $list    # loop through all filenames in current directory
-do
-    echo "$VAR" | cut -d "-" -f 2-  # cut the file when - is reached and returns the field 2 downwards
+while [ $hour -le 12 ]; do
+    minute=1
+    while [ $minute -le 59 ]; do
+        printf "%02d:%02d\n" "$hour" "$minute"
+        ((minute++))
+    done
+    ((hour++))
 done
