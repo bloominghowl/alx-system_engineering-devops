@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Use the until loop to repeat the command 10 times
+
+counter=0
+until [ $counter -eq 10 ]
+do
+    echo "Best School"
+    ((counter++))
+done
