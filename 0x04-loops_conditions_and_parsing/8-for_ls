@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+for file in ./*; do
+    if [[ -f "$file" && ! "$file" =~ ^\..* ]]; then
+        filename=$(basename "$file")
+        filename=${filename#*-}
+        printf "%s\n" "$filename"
+    fi
+done
