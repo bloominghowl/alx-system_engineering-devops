@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Use the while loop to repeat the command 10 times, except on line 9, where hi is displayed.
+
+counter=0
+while [ $counter -lt 10 ]
+do
+    # Check if this is the 9th iteration
+    if [ $counter -eq 8 ]; then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+
+    # Increment the counter variable
+    ((counter++))
+done
