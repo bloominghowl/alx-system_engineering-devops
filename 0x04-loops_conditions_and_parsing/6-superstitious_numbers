@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env bash
 # This script displays number from 1-20 and:
 # displays 4 and then bad luck from China for the 4th loop iteration
@@ -22,3 +23,29 @@ do
 
     number=$(( number + 1 ))
 done
+=======
+#!/usr/bin/env bash
+# This script displays number from 1-20 and:
+# displays 4 and then bad luck from China for the 4th loop iteration
+# displays 9 and then bad luck from Japan for the 9th loop iteration
+# displays 17 and then bad luck from Italy for the 17th loop iteration
+
+number=1
+
+while [ "$number" -le "20" ]
+do
+    echo "$number"
+    case $number in
+        "4" )
+            echo "bad luck from China" ;;
+        "9" )
+            echo "bad luck from Japan" ;;
+        "17" )
+            echo "bad luck from Italy" ;;
+        * )
+            ;;
+    esac
+
+    number=$(( number + 1 ))
+done
+>>>>>>> 4d59b6ac6d150f0ce0ea1a787b33f6b2ee4a76c0
