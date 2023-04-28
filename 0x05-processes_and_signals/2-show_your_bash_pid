@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# This script displays lines containing the word "bash"
-
-# Disable shellcheck warning about using ps with a command substitution
-# as it is required in this case
+# This script displays the PID of the Bash process
 # shellcheck disable=SC2009
-ps axo pid,command | grep bash | grep -v grep
 
-
+# Use the processes.sh command to display all running processes, including those with the word 'bash'
+# Pipe the output to grep to filter lines containing 'bash'
+# Use awk to print the second column (PID) of each matching line
+./1-list_your_processes | grep bash | awk '{print $2}'

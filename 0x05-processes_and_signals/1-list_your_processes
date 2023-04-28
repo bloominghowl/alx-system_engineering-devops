@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # This script displays a list of currently running processes
 
-echo "USER       PID  PPID  COMMAND"
-
-# Use the ps command to list all processes for all users
-ps axo user,pid,ppid,command | awk '{printf "%-10s %5d %5d %s\n",$1,$2,$3,$4}' | less
+# Use ps command to get a list of all running processes, including those without a TTY
+ps -efH | awk '{ printf "%-8s %5s %4s %4s %6s %6s %-8s %4s %7s %s", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10; for (i=11; i<=NF; i++) printf " %s", $i; print "" }'
 
