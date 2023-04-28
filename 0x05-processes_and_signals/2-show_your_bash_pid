@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script displays lines containing the word "bash"
+
+# Disable shellcheck warning about using ps with a command substitution
+# as it is required in this case
+# shellcheck disable=SC2009
+ps axo pid,command | grep bash | grep -v grep
+
+
