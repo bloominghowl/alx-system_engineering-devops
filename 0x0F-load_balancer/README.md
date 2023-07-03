@@ -1,13 +1,12 @@
-iiiiiiiiiiiiiiii<h1><u>0x0F. Load balance</u>r<h1>
+<h1><u>0x0F. Load balance</u>r<h1>
 
 <h2>Concepts<h2>
-<p>For this project, we expect you to look at these concepts:</p>
-<li>
-<ul>
-<a href = https://www.thegeekstuff.com/2016/01/load-balancer-intro/>
-<a herf =https://community.f5.com/t5/technical-articles/intro-to-load-balancing-for-developers-the-algorithms/ta-p/273759>
-<a href = https://intranet.alxswe.com/concepts/68>
-<a img src = https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/275/qfdked8.png>
+<p><i>For this project, we expect you to look at these concepts:</i></p>
+
+<a>https://www.thegeekstuff.com/2016/01/load-balancer-intro</a>
+<a>https://community.f5.com/t5/technical-articles/intro-to-load-balancing-for-developers-the-algorithms/ta-p/273759</a>
+<a>https://intranet.alxswe.com/concepts/68</a>
+<img> https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/275/qfdked8.png>
 
 <h2>Background Context</h2>
 You have been given 2 additional servers:
@@ -21,13 +20,11 @@ For this project, you will need to write Bash scripts to automate your work. All
 <h2>Resources<h2>
 Read or watch:
 
-<li>
-<ol>
-<a href = https://haproxy.debian.net/>
-<a href =https://www.techopedia.com/definition/27178/http-header>
-<a href = https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts>
-</ol>
-</li>
+
+<a>https://haproxy.debian.net</a>
+<a>https://www.techopedia.com/definition/27178/http-header</a>
+<a>https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts</a>
+
 
 <h2>Requirements</h2>
 General
