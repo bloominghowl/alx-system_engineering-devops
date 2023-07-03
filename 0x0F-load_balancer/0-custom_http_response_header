@@ -1,0 +1,30 @@
+s script configures Nginx on a brand new Ubuntu machine to include a custom HTTP response header
+
+# Update the system packages
+sudo apt update
+
+# Install Nginx
+sudo apt install nginx -y
+
+# Configure the custom HTTP response header
+sudo tee /etc/nginx/sites-available/default << EOF
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+
+    add_header X-Served-By \$hostname;
+}
+EOF
+
+# Restart Nginx to apply the changes
+sudo service nginx restart
+

@@ -1,0 +1,36 @@
+s script installs and configures HAProxy on a new Ubuntu machine to meet the requirements
+
+# Update the system packages
+sudo apt update
+
+# Install HAProxy
+sudo apt install haproxy -y
+
+# Configure HAProxy
+sudo tee /etc/haproxy/haproxy.cfg << EOF
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode http
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+frontend http-in
+    bind *:80
+    default_backend app
+
+backend app
+    balance roundrobin
+    server web1 [STUDENT_ID]-web-01:80 check
+    server web2 [STUDENT_ID]-web-02:80 check
+EOF
+
+# Enable HAProxy init script management
+sudo sed -i 's/#ENABLED=0/ENABLED=1/' /etc/default/haproxy
+
+# Restart HAProxy
+sudo service haproxy restart
+
