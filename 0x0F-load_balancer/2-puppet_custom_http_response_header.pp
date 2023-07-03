@@ -1,30 +1,34 @@
-s Puppet manifest configures Nginx to include a custom HTTP response header
-
-class { 'nginx':
-  ensure => installed,
+# Create a custom header with puppet
+exec {'update':
+  provider => shell,
+  command  => 'sudo apt-get -y update',
+  before   => Exec['install Nginx'],
 }
 
-file { '/etc/nginx/sites-available/default':
-  ensure  => present,
-  content => "# Managed by Puppet\n
-              server {
-                listen 80 default_server;
-                listen [::]:80 default_server;
-                root /var/www/html;
-                index index.html index.htm index.nginx-debian.html;
-                server_name _;
-                location / {
-                  try_files \$uri \$uri/ =404;
-                }
-                add_header X-Served-By \$hostname;
-              }",
-  require => Class['nginx'],
-  notify  => Service['nginx'],
+exec {'install Nginx':
+  provider => shell,
+  command  => 'sudo apt-get -y install nginx',
+  before   => Exec['add_header'],
 }
 
-service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  subscribe => File['/etc/nginx/sites-available/default'],
+exec { 'add_header':
+  provider    => shell,
+  environment => ["HOST=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
+  before      => Exec['restart Nginx'],
 }
 
+exec { 'restart Nginx':
+  provider => shell,
+  command  => 'sudo service nginx restart',
+}
+
+# OR    (combine all the steps above together)
+# configures nginx on a server
+# exec { 'setup_nginx':
+#   provider    => shell,
+#   environment => ["HOST=${hostname}"],
+#   command     => 'apt-get -y update; apt-get -y install nginx;
+#   sudo sed -i "/server {/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
+#   service nginx restart'
+# }
