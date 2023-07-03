@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# install nginx server and configure it to port 80, set the 
-redirect_me page, 404 not found page and the X-served-By header
+# install nginx server and configure it to port 80
 
 
 sudo apt update
@@ -22,8 +21,7 @@ echo "server {
         location /redirect_me {
                 return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
         }
-
-        error_page 404 /404.html;
+error_page 404 /404.html;
         location = /404.html{
         internal;
         }
